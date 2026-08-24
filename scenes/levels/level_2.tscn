@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ccsslfotw8rgs" path="res://scenes/block/block.tscn" id="1_g2h2n"]
 [ext_resource type="PackedScene" uid="uid://dwkojscv5rgvx" path="res://scenes/danger_block/danger_block.tscn" id="2_ra442"]
 [ext_resource type="PackedScene" uid="uid://xv3cxv0sqe3f" path="res://scenes/goal/goal.tscn" id="3_ra442"]
+[ext_resource type="PackedScene" uid="uid://baxj0irffo8cy" path="res://scenes/enemies/walker/walker.tscn" id="4_fiq81"]
 
 [node name="level_2" type="Node2D" unique_id=501419045]
 
@@ -47,17 +48,17 @@ position = Vector2(493, -59)
 size = Vector2(20, 16)
 
 [node name="block7" parent="blocks" unique_id=1451156428 instance=ExtResource("1_g2h2n")]
-position = Vector2(-638, -51)
+position = Vector2(-619, -49.999992)
 rotation = 1.574154
-size = Vector2(140, 40)
+size = Vector2(80, 40)
 
 [node name="block8" parent="blocks" unique_id=535563232 instance=ExtResource("1_g2h2n")]
-position = Vector2(-468, -51)
+position = Vector2(-468.00003, -50)
 rotation = 1.574154
 size = Vector2(80, 40)
 
 [node name="block9" parent="blocks" unique_id=645108932 instance=ExtResource("1_g2h2n")]
-position = Vector2(-196, -51)
+position = Vector2(-196.00002, -50)
 rotation = 1.574154
 size = Vector2(80, 40)
 
@@ -67,17 +68,17 @@ rotation = 1.574154
 size = Vector2(40, 40)
 
 [node name="block11" parent="blocks" unique_id=1293600656 instance=ExtResource("1_g2h2n")]
-position = Vector2(-328, -51)
+position = Vector2(-328, -50.000004)
 rotation = 1.574154
 size = Vector2(80, 40)
 
 [node name="danger_block4" parent="blocks" unique_id=1489660794 instance=ExtResource("2_ra442")]
-position = Vector2(-538, -39)
+position = Vector2(-538, -39.999996)
 rotation = 1.574154
 size = Vector2(60, 16)
 
 [node name="danger_block5" parent="blocks" unique_id=316347560 instance=ExtResource("2_ra442")]
-position = Vector2(-398, -39)
+position = Vector2(-398.00003, -40)
 rotation = 1.574154
 size = Vector2(60, 16)
 
@@ -91,3 +92,9 @@ position = Vector2(-698, -70)
 
 [node name="Goal2" parent="." unique_id=271580679 instance=ExtResource("3_ra442")]
 position = Vector2(659, -147)
+
+[node name="walker" parent="." unique_id=1367810944 instance=ExtResource("4_fiq81")]
+position = Vector2(-668, -26)
+
+[node name="walker2" parent="." unique_id=2082450943 instance=ExtResource("4_fiq81")]
+position = Vector2(659, -103)

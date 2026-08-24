@@ -7,6 +7,7 @@ size = Vector2(100, 20)
 
 [node name="danger_block" type="Area2D" unique_id=1397735668]
 collision_layer = 0
+collision_mask = 4
 script = ExtResource("1_qwu7a")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1918446807]

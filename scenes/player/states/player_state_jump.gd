@@ -16,4 +16,4 @@ func physics_update(_delta: float) -> void:
 	if Input.is_action_just_released("jump") and player.velocity.y < 0.0:
 		player.velocity.y *= player.stats.jump_cut
 	
-	player.move_x(player.air_speed())
+	player.move_x(player.stats.speed)

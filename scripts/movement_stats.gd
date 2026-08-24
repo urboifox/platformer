@@ -2,8 +2,7 @@ class_name MovementStats
 extends Resource
 
 @export var health: float = 2.0
-@export var walk_speed: float = 180.0
-@export var run_speed: float = 300.0
+@export var speed: float = 250.0
 @export var jump_velocity: float = -400.0
 @export var gravity: float = 1400.0
 @export var fall_threshold: float = 250.0

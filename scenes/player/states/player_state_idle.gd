@@ -10,4 +10,4 @@ func physics_update(delta: float) -> void:
 	
 	var direction := Input.get_axis("left", "right")
 	if direction != 0.0:
-		return state_machine.transition("Walk")
+		return state_machine.transition("Run")

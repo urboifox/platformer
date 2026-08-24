@@ -3,10 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://dw3g64u11qbsr" path="res://assets/images/player.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://dw8l3skd2w60k" path="res://scenes/player/player.gd" id="1_dovo2"]
 [ext_resource type="Resource" uid="uid://dru5qg86e20hu" path="res://scenes/player/player_stats.tres" id="2_0owmy"]
-[ext_resource type="Script" uid="uid://s1b8ovm6hj7g" path="res://scenes/player/states/player_state_machine.gd" id="3_gmlin"]
+[ext_resource type="Script" uid="uid://cbcpj58j47ht1" path="res://scripts/fsm/state_machine.gd" id="3_gmlin"]
 [ext_resource type="Script" uid="uid://4s4dwllpqcwr" path="res://scenes/player/states/player_state_idle.gd" id="4_lvxji"]
 [ext_resource type="Script" uid="uid://jg6o48ocmau3" path="res://scenes/player/camera.gd" id="4_ugbui"]
-[ext_resource type="Script" uid="uid://bqabex4ubmpbv" path="res://scenes/player/states/player_state_walk.gd" id="5_p47bc"]
 [ext_resource type="Script" uid="uid://ct8hkhcbehpd0" path="res://scenes/player/states/player_state_run.gd" id="6_75vfm"]
 [ext_resource type="Script" uid="uid://dgt45kjvqix" path="res://scenes/player/states/player_state_jump.gd" id="8_qek5x"]
 [ext_resource type="Script" uid="uid://cmmp6do680y0o" path="res://scenes/player/states/player_state_fall.gd" id="9_5gtgg"]
@@ -318,6 +317,19 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5q8fn"]
 size = Vector2(16, 28)
 
+[sub_resource type="GDScript" id="GDScript_gx1jg"]
+script/source = "extends Area2D
+
+signal hurt(damage: int)
+
+func take_damage(damage: int):
+	print(\"Took damage\")
+	hurt.emit(damage)
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ydybj"]
+size = Vector2(11, 19)
+
 [node name="player" type="CharacterBody2D" unique_id=265386101]
 z_index = 5
 collision_mask = 16
@@ -326,11 +338,21 @@ stats = ExtResource("2_0owmy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=49854906]
 sprite_frames = SubResource("SpriteFrames_x7p2l")
-animation = &"run"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1919691850]
 position = Vector2(-1, 2)
 shape = SubResource("RectangleShape2D_5q8fn")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1239310450]
+collision_layer = 4
+collision_mask = 0
+script = SubResource("GDScript_gx1jg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1414490538]
+position = Vector2(-0.5, 3.5)
+shape = SubResource("RectangleShape2D_ydybj")
+debug_color = Color(1, 0, 0, 0.41960785)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1038126380]
 position_smoothing_enabled = true
@@ -342,9 +364,6 @@ initial_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine" unique_id=1130128586]
 script = ExtResource("4_lvxji")
-
-[node name="Walk" type="Node" parent="StateMachine" unique_id=64714077]
-script = ExtResource("5_p47bc")
 
 [node name="Run" type="Node" parent="StateMachine" unique_id=1763566853]
 script = ExtResource("6_75vfm")

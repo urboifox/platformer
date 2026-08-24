@@ -17,4 +17,4 @@ func physics_update(_delta: float) -> void:
 	if player.velocity.y > 400.0:
 		Audio.play_loop("falling")
 	
-	player.move_x(player.air_speed())
+	player.move_x(player.stats.speed)

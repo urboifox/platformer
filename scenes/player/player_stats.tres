@@ -4,3 +4,4 @@
 
 [resource]
 script = ExtResource("1_2eiml")
+health = 1.0

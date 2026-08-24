@@ -5,6 +5,7 @@ extends Area2D
 	set(value):
 		size = value
 		_update_size()
+@export var damage: float = 1.0
 
 @onready var rect: ColorRect = $ColorRect
 @onready var collision: CollisionShape2D = $CollisionShape2D
@@ -23,6 +24,6 @@ func _update_size() -> void:
 func _physics_process(_delta: float) -> void:
 	if Engine.is_editor_hint():
 		return
-	for body in get_overlapping_bodies():
-		if body is Player:
-			body.damage(1)
+	for area in get_overlapping_areas():
+		if area.owner.has_method("take_damage"):
+			area.owner.take_damage(damage, global_position)

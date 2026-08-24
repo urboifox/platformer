@@ -5,7 +5,7 @@ extends CharacterBody2D
 
 @onready var camera: Camera2D = $Camera2D
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var state_machine: PlayerStateMachine = $StateMachine
+@onready var state_machine: StateMachine = $StateMachine
 
 var hp: float
 var spawn_position: Vector2
@@ -13,6 +13,7 @@ var coyote_timer: float = 0.0
 var jump_buffer: float = 0.0
 var invincible_timer: float = 0.0
 var _footstep_grace: float = 0.0
+var knockback_direction: float = 0.0
 
 signal finished_level()
 
@@ -42,26 +43,20 @@ func move_x(speed: float) -> void:
 	velocity.x = direction * speed
 
 func ground_state() -> String:
-	if Input.get_axis("left", "right") == 0.0:
-		return "Idle"
-	if Input.is_action_pressed("run"):
-		return "Run"
-	return "Walk"
+	return "Idle" if Input.get_axis("left", "right") == 0.0 else "Run"
 
 func land_state() -> String:
 	return "Jump" if jump_buffer > 0.0 else ground_state()
-
-func air_speed() -> float:
-	return stats.run_speed if Input.is_action_pressed("run") else stats.walk_speed
 
 func _update_timers(delta: float) -> void:
 	coyote_timer = stats.coyote_time if is_on_floor() else coyote_timer - delta
 	jump_buffer = stats.jump_buffer_time if Input.is_action_just_pressed("jump") else jump_buffer - delta
 
-func damage(strength: float) -> void:
+func take_damage(damage: float, source_position: Vector2) -> void:
 	if invincible_timer > 0.0:
 		return
-	hp -= strength
+	hp -= damage
+	knockback_direction = signf(global_position.x - source_position.x)
 	if hp <= 0.0:
 		state_machine.transition("Die")
 		return
@@ -90,6 +85,7 @@ func _update_footsteps(delta: float) -> void:
 func respawn() -> void:
 	global_position = spawn_position
 	hp = stats.health
+	invincible_timer = stats.invincible_time
 	camera.reset_smoothing()
 
 func win() -> void:
