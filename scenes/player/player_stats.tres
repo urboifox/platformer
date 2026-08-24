@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="MovementStats" format=3 uid="uid://dru5qg86e20hu"]
+
+[ext_resource type="Script" uid="uid://bec17yi4ndil3" path="res://scripts/movement_stats.gd" id="1_2eiml"]
+
+[resource]
+script = ExtResource("1_2eiml")
