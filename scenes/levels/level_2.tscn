@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://dmqwm1whvogj4"]
+
+[ext_resource type="PackedScene" uid="uid://ccsslfotw8rgs" path="res://scenes/block/block.tscn" id="1_g2h2n"]
+[ext_resource type="PackedScene" uid="uid://dwkojscv5rgvx" path="res://scenes/danger_block/danger_block.tscn" id="2_ra442"]
+[ext_resource type="PackedScene" uid="uid://xv3cxv0sqe3f" path="res://scenes/goal/goal.tscn" id="3_ra442"]
+
+[node name="level_2" type="Node2D" unique_id=501419045]
+
+[node name="spawn" type="Marker2D" parent="." unique_id=1160066576]
+position = Vector2(-30, -26)
+
+[node name="blocks" type="Node2D" parent="." unique_id=511321230]
+
+[node name="block" parent="blocks" unique_id=774768013 instance=ExtResource("1_g2h2n")]
+size = Vector2(1500, 20)
+
+[node name="block2" parent="blocks" unique_id=1440039599 instance=ExtResource("1_g2h2n")]
+position = Vector2(106, -30)
+size = Vector2(140, 40)
+
+[node name="block3" parent="blocks" unique_id=1291298225 instance=ExtResource("1_g2h2n")]
+position = Vector2(276, -30)
+size = Vector2(80, 40)
+
+[node name="block5" parent="blocks" unique_id=75433623 instance=ExtResource("1_g2h2n")]
+position = Vector2(548, -30)
+size = Vector2(80, 40)
+
+[node name="block6" parent="blocks" unique_id=1714145255 instance=ExtResource("1_g2h2n")]
+position = Vector2(659, -67)
+size = Vector2(80, 40)
+
+[node name="block4" parent="blocks" unique_id=812371043 instance=ExtResource("1_g2h2n")]
+position = Vector2(416, -30)
+size = Vector2(80, 40)
+
+[node name="danger_block" parent="blocks" unique_id=1397735668 instance=ExtResource("2_ra442")]
+position = Vector2(206, -18)
+size = Vector2(60, 16)
+
+[node name="danger_block3" parent="blocks" unique_id=2108913279 instance=ExtResource("2_ra442")]
+position = Vector2(346, -18)
+size = Vector2(60, 16)
+
+[node name="danger_block2" parent="blocks" unique_id=1011601068 instance=ExtResource("2_ra442")]
+position = Vector2(493, -59)
+size = Vector2(20, 16)
+
+[node name="block7" parent="blocks" unique_id=1451156428 instance=ExtResource("1_g2h2n")]
+position = Vector2(-638, -51)
+rotation = 1.574154
+size = Vector2(140, 40)
+
+[node name="block8" parent="blocks" unique_id=535563232 instance=ExtResource("1_g2h2n")]
+position = Vector2(-468, -51)
+rotation = 1.574154
+size = Vector2(80, 40)
+
+[node name="block9" parent="blocks" unique_id=645108932 instance=ExtResource("1_g2h2n")]
+position = Vector2(-196, -51)
+rotation = 1.574154
+size = Vector2(80, 40)
+
+[node name="block10" parent="blocks" unique_id=144529206 instance=ExtResource("1_g2h2n")]
+position = Vector2(-123.99999, -28.99999)
+rotation = 1.574154
+size = Vector2(40, 40)
+
+[node name="block11" parent="blocks" unique_id=1293600656 instance=ExtResource("1_g2h2n")]
+position = Vector2(-328, -51)
+rotation = 1.574154
+size = Vector2(80, 40)
+
+[node name="danger_block4" parent="blocks" unique_id=1489660794 instance=ExtResource("2_ra442")]
+position = Vector2(-538, -39)
+rotation = 1.574154
+size = Vector2(60, 16)
+
+[node name="danger_block5" parent="blocks" unique_id=316347560 instance=ExtResource("2_ra442")]
+position = Vector2(-398, -39)
+rotation = 1.574154
+size = Vector2(60, 16)
+
+[node name="danger_block6" parent="blocks" unique_id=759689805 instance=ExtResource("2_ra442")]
+position = Vector2(-251, -80)
+rotation = 1.574154
+size = Vector2(20, 16)
+
+[node name="Goal" parent="." unique_id=1693807159 instance=ExtResource("3_ra442")]
+position = Vector2(-698, -70)
+
+[node name="Goal2" parent="." unique_id=271580679 instance=ExtResource("3_ra442")]
+position = Vector2(659, -147)

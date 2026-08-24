@@ -2,8 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://ccsslfotw8rgs" path="res://scenes/block/block.tscn" id="1_ksju7"]
 [ext_resource type="PackedScene" uid="uid://dwkojscv5rgvx" path="res://scenes/danger_block/danger_block.tscn" id="2_6iamk"]
+[ext_resource type="PackedScene" uid="uid://xv3cxv0sqe3f" path="res://scenes/goal/goal.tscn" id="3_nsrm0"]
 
-[node name="level" type="Node2D" unique_id=501419045]
+[node name="level_1" type="Node2D" unique_id=501419045]
 
 [node name="spawn" type="Marker2D" parent="." unique_id=1160066576]
 position = Vector2(-30, -26)
@@ -40,3 +41,6 @@ size = Vector2(100, 16)
 [node name="danger_block2" parent="blocks" unique_id=1011601068 instance=ExtResource("2_6iamk")]
 position = Vector2(431, -98)
 size = Vector2(20, 16)
+
+[node name="Goal" parent="." unique_id=1693807159 instance=ExtResource("3_nsrm0")]
+position = Vector2(642, -192)

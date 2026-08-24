@@ -14,6 +14,8 @@ var jump_buffer: float = 0.0
 var invincible_timer: float = 0.0
 var _footstep_grace: float = 0.0
 
+signal finished_level()
+
 func _ready() -> void:
 	hp = stats.health
 	state_machine.start()
@@ -48,6 +50,9 @@ func ground_state() -> String:
 
 func land_state() -> String:
 	return "Jump" if jump_buffer > 0.0 else ground_state()
+
+func air_speed() -> float:
+	return stats.run_speed if Input.is_action_pressed("run") else stats.walk_speed
 
 func _update_timers(delta: float) -> void:
 	coyote_timer = stats.coyote_time if is_on_floor() else coyote_timer - delta
@@ -86,3 +91,6 @@ func respawn() -> void:
 	global_position = spawn_position
 	hp = stats.health
 	camera.reset_smoothing()
+
+func win() -> void:
+	state_machine.transition("Win")

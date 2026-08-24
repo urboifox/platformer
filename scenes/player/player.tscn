@@ -13,7 +13,7 @@
 [ext_resource type="Script" uid="uid://4rybtorxe6h7" path="res://scenes/player/states/player_state_hurt.gd" id="10_h17s1"]
 [ext_resource type="Script" uid="uid://cx130i2oacqi1" path="res://scenes/player/states/player_state_die.gd" id="11_je7p5"]
 [ext_resource type="Script" uid="uid://uu4eh3vlopjy" path="res://scenes/player/states/player_state_teleport_in.gd" id="12_fm80t"]
-[ext_resource type="Script" uid="uid://bntek1em640ag" path="res://scenes/player/states/player_state_teleport_out.gd" id="13_gx1jg"]
+[ext_resource type="Script" uid="uid://bntek1em640ag" path="res://scenes/player/states/player_state_win.gd" id="13_gx1jg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dovo2"]
 atlas = ExtResource("1_8afob")
@@ -338,7 +338,7 @@ script = ExtResource("4_ugbui")
 
 [node name="StateMachine" type="Node" parent="." unique_id=1519730511 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_gmlin")
-initial_state = NodePath("TeleportIn")
+initial_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine" unique_id=1130128586]
 script = ExtResource("4_lvxji")
@@ -364,5 +364,5 @@ script = ExtResource("11_je7p5")
 [node name="TeleportIn" type="Node" parent="StateMachine" unique_id=880250596]
 script = ExtResource("12_fm80t")
 
-[node name="TeleportOut" type="Node" parent="StateMachine" unique_id=1607631775]
+[node name="Win" type="Node" parent="StateMachine" unique_id=1607631775]
 script = ExtResource("13_gx1jg")
