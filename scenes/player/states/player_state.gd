@@ -4,6 +4,7 @@ extends State
 
 @onready var player: Player = owner as Player
 
+
 func left_ground() -> bool:
 	if not player.is_on_floor():
 		state_machine.transition("Fall")

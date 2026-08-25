@@ -13,3 +13,4 @@ extends Resource
 @export var friction: float = 1200
 @export var knockback_force: float = 300
 @export var invincible_time: float = 1.0
+@export var wall_slide_velocity: float = 50.0

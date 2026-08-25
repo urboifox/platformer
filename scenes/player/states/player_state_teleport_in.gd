@@ -1,5 +1,6 @@
 extends PlayerState
 
+
 func enter() -> void:
 	player.velocity = Vector2.ZERO
 	player.sprite.play("teleport_in")

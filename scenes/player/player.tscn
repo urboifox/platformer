@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://cx130i2oacqi1" path="res://scenes/player/states/player_state_die.gd" id="11_je7p5"]
 [ext_resource type="Script" uid="uid://uu4eh3vlopjy" path="res://scenes/player/states/player_state_teleport_in.gd" id="12_fm80t"]
 [ext_resource type="Script" uid="uid://bntek1em640ag" path="res://scenes/player/states/player_state_win.gd" id="13_gx1jg"]
+[ext_resource type="Script" uid="uid://krx30pxkgg41" path="res://scenes/player/states/player_state_wall_slide.gd" id="14_ugbui"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dovo2"]
 atlas = ExtResource("1_8afob")
@@ -385,3 +386,6 @@ script = ExtResource("12_fm80t")
 
 [node name="Win" type="Node" parent="StateMachine" unique_id=1607631775]
 script = ExtResource("13_gx1jg")
+
+[node name="WallSlide" type="Node" parent="StateMachine" unique_id=98755653]
+script = ExtResource("14_ugbui")
