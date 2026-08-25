@@ -2,7 +2,7 @@ extends PlayerState
 
 
 func enter() -> void:
-	player.sprite.play("fall")
+	player.sprite.play("wall_slide")
 	player.apply_gravity = false
 	player.last_wall_side = -signf(player.get_wall_normal().x)
 
