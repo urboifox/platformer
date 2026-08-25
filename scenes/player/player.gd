@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var camera: Camera2D = $Camera2D
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var state_machine: StateMachine = $StateMachine
+@onready var wall_check: RayCast2D = $AnimatedSprite2D/WallCheck
 
 var hp: float
 var spawn_position: Vector2

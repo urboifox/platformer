@@ -169,7 +169,7 @@ region = Rect2(96, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7obkq"]
 atlas = ExtResource("1_8afob")
-region = Rect2(0, 288, 28, 32)
+region = Rect2(0, 288, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_x7p2l"]
 animations = [{
@@ -342,7 +342,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5q8fn"]
-size = Vector2(16, 28)
+size = Vector2(14, 28)
 
 [sub_resource type="GDScript" id="GDScript_gx1jg"]
 script/source = "extends Area2D
@@ -365,11 +365,15 @@ stats = ExtResource("2_0owmy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=49854906]
 sprite_frames = SubResource("SpriteFrames_x7p2l")
-animation = &"wall_slide"
-frame_progress = 0.17954327
+animation = &"jump"
+
+[node name="WallCheck" type="RayCast2D" parent="AnimatedSprite2D" unique_id=1137869890]
+position = Vector2(0, 12)
+target_position = Vector2(8, 0)
+collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1919691850]
-position = Vector2(-1, 2)
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_5q8fn")
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1239310450]

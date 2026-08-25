@@ -15,6 +15,9 @@ func physics_update(_delta: float) -> void:
 	if not player.is_on_wall():
 		return state_machine.transition("Fall")
 
+	if not player.wall_check.is_colliding():
+		return state_machine.transition("Fall")
+
 	if Input.is_action_just_pressed("jump"):
 		return state_machine.transition("Jump")
 
