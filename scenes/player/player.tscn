@@ -444,9 +444,7 @@ stats = ExtResource("2_0owmy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=49854906]
 sprite_frames = SubResource("SpriteFrames_x7p2l")
-animation = &"attack"
-frame = 7
-frame_progress = 1.0
+animation = &"idle"
 
 [node name="hitbox" parent="AnimatedSprite2D" unique_id=2061379113 instance=ExtResource("4_kvlxm")]
 collision_mask = 128
