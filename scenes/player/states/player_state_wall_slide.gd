@@ -21,6 +21,9 @@ func physics_update(delta: float) -> void:
 	if signf(Input.get_axis("left", "right")) != player.last_wall_side:
 		return state_machine.transition("Fall")
 
+	if player.is_on_floor():
+		return state_machine.transition(player.ground_state())
+
 	player.velocity.y = player.stats.wall_slide_velocity
 	player.coyote_timer = player.stats.coyote_time
 	player.move_x(player.stats.speed, delta)

@@ -19,3 +19,4 @@ extends Resource
 @export var wall_slide_velocity: float = 50.0
 @export var dash_time: float = 0.15
 @export var air_dashes: int = 1
+@export var air_jumps: int = 1

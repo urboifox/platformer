@@ -13,6 +13,9 @@ func physics_update(delta: float) -> void:
 	if try_dash():
 		return state_machine.transition("Dash")
 
+	if try_air_jump():
+		return state_machine.transition("Jump")
+
 	if player.is_on_floor():
 		return state_machine.transition(player.land_state())
 

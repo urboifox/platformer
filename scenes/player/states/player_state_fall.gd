@@ -13,6 +13,9 @@ func physics_update(delta: float) -> void:
 	if try_dash():
 		return state_machine.transition("Dash")
 
+	if try_air_jump():
+		return state_machine.transition("Jump")
+
 	if player.is_on_floor():
 		Audio.play("land", 0.5)
 		return state_machine.transition(player.land_state())
@@ -21,7 +24,7 @@ func physics_update(delta: float) -> void:
 		Audio.play_loop("falling")
 
 	if player.is_on_wall():
-		if player.last_wall_side != -signf(player.get_wall_normal().x):
+		if signf(Input.get_axis("left", "right")) == player.last_wall_side:
 			return state_machine.transition("WallSlide")
 
 	if player.coyote_timer > 0.0 and Input.is_action_just_pressed("jump"):

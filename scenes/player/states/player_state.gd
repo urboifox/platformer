@@ -25,3 +25,12 @@ func try_dash() -> bool:
 		player.air_dashes -= 1
 
 	return true
+
+
+func try_air_jump() -> bool:
+	if not Input.is_action_just_pressed("jump"):
+		return false
+	if player.air_jumps <= 0:
+		return false
+	player.air_jumps -= 1
+	return true

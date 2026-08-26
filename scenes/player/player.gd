@@ -20,6 +20,7 @@ var knockback_direction: float = 0.0
 var apply_gravity: bool = true
 var last_wall_side: float = 0.0 # used for wall slide
 var air_dashes: int
+var air_jumps: int
 
 signal finished_level()
 
@@ -27,6 +28,7 @@ signal finished_level()
 func _ready() -> void:
 	hp = stats.health
 	air_dashes = stats.air_dashes
+	air_jumps = stats.air_jumps
 	state_machine.start()
 
 
@@ -42,6 +44,7 @@ func _physics_process(delta: float) -> void:
 
 	if is_on_floor():
 		air_dashes = stats.air_dashes
+		air_jumps = stats.air_jumps
 		last_wall_side = -signf(wall_check.get_collision_normal().x) if wall_check.is_colliding() else 0.0
 
 	move_and_slide()
