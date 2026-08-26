@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dw8l3skd2w60k" path="res://scenes/player/player.gd" id="1_dovo2"]
 [ext_resource type="Resource" uid="uid://dru5qg86e20hu" path="res://scenes/player/player_stats.tres" id="2_0owmy"]
 [ext_resource type="Script" uid="uid://cbcpj58j47ht1" path="res://scripts/fsm/state_machine.gd" id="3_gmlin"]
+[ext_resource type="PackedScene" uid="uid://mor5ufkgj48r" path="res://scenes/hitbox/hitbox.tscn" id="4_kvlxm"]
 [ext_resource type="Script" uid="uid://4s4dwllpqcwr" path="res://scenes/player/states/player_state_idle.gd" id="4_lvxji"]
 [ext_resource type="Script" uid="uid://jg6o48ocmau3" path="res://scenes/player/camera.gd" id="4_ugbui"]
 [ext_resource type="Script" uid="uid://ct8hkhcbehpd0" path="res://scenes/player/states/player_state_run.gd" id="6_75vfm"]
@@ -416,6 +417,9 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2q4yw"]
+size = Vector2(16, 21)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5q8fn"]
 size = Vector2(14, 28)
 
@@ -443,6 +447,15 @@ sprite_frames = SubResource("SpriteFrames_x7p2l")
 animation = &"attack"
 frame = 7
 frame_progress = 1.0
+
+[node name="hitbox" parent="AnimatedSprite2D" unique_id=2061379113 instance=ExtResource("4_kvlxm")]
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/hitbox" unique_id=863875885]
+position = Vector2(13, 2.5)
+shape = SubResource("RectangleShape2D_2q4yw")
+disabled = true
+debug_color = Color(0.8535924, 0.36995354, 9.62615e-07, 0.41960785)
 
 [node name="WallCheck" type="RayCast2D" parent="AnimatedSprite2D" unique_id=1137869890]
 position = Vector2(0, 12)

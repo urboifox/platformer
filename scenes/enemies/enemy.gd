@@ -5,12 +5,15 @@ extends CharacterBody2D
 @export var gravity: float = 1400.0
 @export var hp: float = 3.0
 @export_enum("right", "left") var facing: String = "right"
+@export var knockback_force: float = 300.0
+@export var knockback_friction: float = 1200.0
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var state_machine: StateMachine = $StateMachine
 
 var direction: int
 var target: Node2D = null
+var knockback_direction: float = 0.0
 
 
 func _on_detector_body_entered(body: Node2D) -> void:
@@ -42,10 +45,13 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func take_damage(damage: float) -> void:
+func take_damage(damage: float, source_position: Vector2) -> void:
 	hp -= damage
 	if hp <= 0.0:
 		die()
+		return
+	knockback_direction = signf(global_position.x - source_position.x)
+	state_machine.transition("Hurt")
 
 
 func die() -> void:

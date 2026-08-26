@@ -14,4 +14,9 @@ func enter() -> void:
 
 
 func physics_update(delta: float) -> void:
+	player.hitbox_shape.disabled = player.sprite.frame < 3 or player.sprite.frame > 5
 	player.move_x(player.stats.speed, delta)
+
+
+func exit() -> void:
+	player.hitbox_shape.disabled = true

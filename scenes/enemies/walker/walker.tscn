@@ -2,10 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://mor5ufkgj48r" path="res://scenes/hitbox/hitbox.tscn" id="1_78frl"]
 [ext_resource type="Script" uid="uid://dxqe2lgb6bhp2" path="res://scenes/enemies/walker/walker.gd" id="1_nu5r1"]
-[ext_resource type="Texture2D" uid="uid://do7c6u36shrsn" path="res://assets/images/bug_hulk.png" id="2_t84yv"]
+[ext_resource type="Texture2D" uid="uid://dxdv2llnq4rm8" path="res://assets/images/bug_hulk.png" id="2_t84yv"]
 [ext_resource type="Script" uid="uid://rkr0ojkxml3l" path="res://scenes/enemies/walker/states/walker_state_walk.gd" id="4_8ncbn"]
 [ext_resource type="Script" uid="uid://cbcpj58j47ht1" path="res://scripts/fsm/state_machine.gd" id="4_hhaqj"]
+[ext_resource type="PackedScene" uid="uid://cmu00r6yhu514" path="res://scenes/hurtbox/hurtbox.tscn" id="4_seg88"]
 [ext_resource type="Script" uid="uid://dle0bjoo2kwrv" path="res://scenes/enemies/walker/states/walker_state_attack.gd" id="5_hhaqj"]
+[ext_resource type="Script" uid="uid://cgj44gvtbccqh" path="res://scenes/enemies/enemy_state_hurt.gd" id="6_hurt0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wq731"]
 atlas = ExtResource("2_t84yv")
@@ -122,6 +124,9 @@ size = Vector2(15, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrinp"]
 size = Vector2(24.5, 16)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2q4yw"]
+size = Vector2(24, 27)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ydybj"]
 size = Vector2(21, 27)
 
@@ -162,6 +167,13 @@ shape = SubResource("RectangleShape2D_xrinp")
 disabled = true
 debug_color = Color(1, 0, 0, 0.41960785)
 
+[node name="hurtbox" parent="AnimatedSprite2D" unique_id=87016501 instance=ExtResource("4_seg88")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/hurtbox" unique_id=974828533]
+position = Vector2(-2, 2.5)
+shape = SubResource("RectangleShape2D_2q4yw")
+debug_color = Color(0.9954272, 0, 0.21338138, 0.41960785)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=851468376]
 position = Vector2(-2.5, 2.5)
 shape = SubResource("RectangleShape2D_ydybj")
@@ -175,3 +187,6 @@ script = ExtResource("4_8ncbn")
 
 [node name="Attack" type="Node" parent="StateMachine" unique_id=80427442]
 script = ExtResource("5_hhaqj")
+
+[node name="Hurt" type="Node" parent="StateMachine" unique_id=80427443]
+script = ExtResource("6_hurt0")
