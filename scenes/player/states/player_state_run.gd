@@ -16,5 +16,8 @@ func physics_update(delta: float) -> void:
 	if direction == 0.0:
 		return state_machine.transition("Idle")
 
+	if Input.is_action_just_pressed("attack"):
+		return state_machine.transition("Attack")
+
 	player.move_x(player.stats.speed, delta)
 	player.request_footsteps(2.0)
