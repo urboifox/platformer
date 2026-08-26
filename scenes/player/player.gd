@@ -41,7 +41,6 @@ func _physics_process(delta: float) -> void:
 
 	if is_on_floor():
 		air_dashes = stats.air_dashes
-		last_wall_side = 0.0
 		last_wall_side = -signf(wall_check.get_collision_normal().x) if wall_check.is_colliding() else 0.0
 
 	move_and_slide()
