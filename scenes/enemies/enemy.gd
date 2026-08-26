@@ -1,8 +1,6 @@
 class_name Enemy
 extends CharacterBody2D
 
-const FLASH_SHADER := preload("res://shaders/flash.gdshader")
-
 @export var speed: float = 80.0
 @export var gravity: float = 1400.0
 @export var hp: float = 3.0
@@ -29,10 +27,6 @@ func _on_detector_body_exited(body: Node2D) -> void:
 
 
 func _ready() -> void:
-	var mat := ShaderMaterial.new()
-	mat.shader = FLASH_SHADER
-	sprite.material = mat
-
 	if sprite.has_node("Detector"):
 		var detector = sprite.get_node("Detector")
 		detector.body_entered.connect(_on_detector_body_entered)
@@ -62,9 +56,8 @@ func take_damage(damage: float, source_position: Vector2) -> void:
 
 
 func flash() -> void:
-	var mat: ShaderMaterial = sprite.material
-	mat.set_shader_parameter("flash", 1.0)
-	create_tween().tween_property(mat, "shader_parameter/flash", 0.0, 0.15)
+	sprite.modulate = Color(1, 0.3, 0.3)
+	create_tween().tween_property(sprite, "modulate", Color.WHITE, 0.15)
 
 
 func die() -> void:
