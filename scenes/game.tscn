@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dr8ioja5inmsv" path="res://scenes/player/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://dlpvvngv32dbk" path="res://scenes/levels/level_1.tscn" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://dmqwm1whvogj4" path="res://scenes/levels/level_2.tscn" id="3_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://qqv3xtq4cs7g" path="res://scenes/hud/hud.tscn" id="5_iywne"]
 
 [node name="game" type="Node2D" unique_id=1135410216]
 script = ExtResource("1_lnu2h")
@@ -12,3 +13,5 @@ levels = Array[PackedScene]([ExtResource("2_yqjtg"), ExtResource("3_lbhrr")])
 [node name="player" parent="." unique_id=265386101 instance=ExtResource("1_uwrxv")]
 
 [node name="LevelContainer" type="Node2D" parent="." unique_id=668704692]
+
+[node name="hud" parent="." unique_id=854056363 instance=ExtResource("5_iywne")]

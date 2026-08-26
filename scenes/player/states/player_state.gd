@@ -34,3 +34,14 @@ func try_air_jump() -> bool:
 		return false
 	player.air_jumps -= 1
 	return true
+
+
+func try_wall_slide() -> bool:
+	if not player.is_on_wall():
+		return false
+	var wall_side = -signf(player.get_wall_normal().x)
+	if signf(Input.get_axis("left", "right")) != wall_side:
+		return false
+	if wall_side == player.last_wall_side:
+		return false
+	return true

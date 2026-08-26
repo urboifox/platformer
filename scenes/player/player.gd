@@ -23,10 +23,12 @@ var air_dashes: int
 var air_jumps: int
 
 signal finished_level()
+signal health_changed(value: float)
 
 
 func _ready() -> void:
 	hp = stats.health
+	health_changed.emit(hp)
 	air_dashes = stats.air_dashes
 	air_jumps = stats.air_jumps
 	state_machine.start()
@@ -86,7 +88,10 @@ func take_damage(damage: float, source_position: Vector2) -> void:
 	if invincible_timer > 0.0:
 		return
 	hp -= damage
+	health_changed.emit(hp)
 	knockback_direction = signf(global_position.x - source_position.x)
+	if knockback_direction == 0.0:
+		knockback_direction = -signf(sprite.scale.x)
 	if hp <= 0.0:
 		state_machine.transition("Die")
 		return
@@ -119,6 +124,7 @@ func _update_footsteps(delta: float) -> void:
 func respawn() -> void:
 	global_position = spawn_position
 	hp = stats.health
+	health_changed.emit(hp)
 	invincible_timer = stats.invincible_time
 	camera.reset_smoothing()
 

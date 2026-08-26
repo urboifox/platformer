@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://d33tdkn3av4um"]
+
+[ext_resource type="Texture2D" uid="uid://cu1mt28jbt14b" path="res://assets/images/hearts.png" id="1_v30as"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iywne"]
+atlas = ExtResource("1_v30as")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p57ef"]
+atlas = ExtResource("1_v30as")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ydybj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iywne")
+}],
+"loop": 0,
+"name": &"empty",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p57ef")
+}],
+"loop": 0,
+"name": &"filled",
+"speed": 10.0
+}]
+
+[node name="heart" type="AnimatedSprite2D" unique_id=996599575]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_ydybj")
+animation = &"empty"

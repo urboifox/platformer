@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://qqv3xtq4cs7g"]
+
+[ext_resource type="Script" uid="uid://dxnmwcd4b5qgw" path="res://scenes/hud/hud.gd" id="1_48c2t"]
+
+[node name="hud" type="CanvasLayer" unique_id=854056363]
+script = ExtResource("1_48c2t")
+
+[node name="Hearts" type="Node2D" parent="." unique_id=286127249]
+position = Vector2(20, 20)
