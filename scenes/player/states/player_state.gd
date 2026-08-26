@@ -13,3 +13,15 @@ func left_ground() -> bool:
 		state_machine.transition("Jump")
 		return true
 	return false
+
+
+func try_dash() -> bool:
+	if not Input.is_action_just_pressed("dash"):
+		return false
+
+	if not player.is_on_floor() or player.is_on_wall():
+		if player.air_dashes <= 0:
+			return false
+		player.air_dashes -= 1
+
+	return true

@@ -14,6 +14,11 @@
 [ext_resource type="Script" uid="uid://uu4eh3vlopjy" path="res://scenes/player/states/player_state_teleport_in.gd" id="12_fm80t"]
 [ext_resource type="Script" uid="uid://bntek1em640ag" path="res://scenes/player/states/player_state_win.gd" id="13_gx1jg"]
 [ext_resource type="Script" uid="uid://krx30pxkgg41" path="res://scenes/player/states/player_state_wall_slide.gd" id="14_ugbui"]
+[ext_resource type="Script" uid="uid://cyxrv0rstfvg" path="res://scenes/player/states/player_state_dash.gd" id="15_fcs02"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vo27k"]
+atlas = ExtResource("1_8afob")
+region = Rect2(160, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dovo2"]
 atlas = ExtResource("1_8afob")
@@ -173,6 +178,14 @@ region = Rect2(0, 288, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_x7p2l"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vo27k")
+}],
+"loop": 0,
+"name": &"dash",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dovo2")
@@ -365,7 +378,7 @@ stats = ExtResource("2_0owmy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=49854906]
 sprite_frames = SubResource("SpriteFrames_x7p2l")
-animation = &"jump"
+animation = &"dash"
 
 [node name="WallCheck" type="RayCast2D" parent="AnimatedSprite2D" unique_id=1137869890]
 position = Vector2(0, 12)
@@ -420,3 +433,6 @@ script = ExtResource("13_gx1jg")
 
 [node name="WallSlide" type="Node" parent="StateMachine" unique_id=98755653]
 script = ExtResource("14_ugbui")
+
+[node name="Dash" type="Node" parent="StateMachine" unique_id=51553588]
+script = ExtResource("15_fcs02")

@@ -10,6 +10,9 @@ func exit() -> void:
 
 
 func physics_update(_delta: float) -> void:
+	if try_dash():
+		return state_machine.transition("Dash")
+
 	if player.is_on_floor():
 		Audio.play("land", 0.5)
 		return state_machine.transition(player.land_state())

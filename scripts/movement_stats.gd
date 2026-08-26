@@ -3,6 +3,7 @@ extends Resource
 
 @export var health: float = 2.0
 @export var speed: float = 250.0
+@export var dash_speed: float = 500.0
 @export var jump_velocity: float = -400.0
 @export var gravity: float = 1400.0
 @export var fall_threshold: float = 250.0
@@ -14,3 +15,5 @@ extends Resource
 @export var knockback_force: float = 300
 @export var invincible_time: float = 1.0
 @export var wall_slide_velocity: float = 50.0
+@export var dash_time: float = 0.15
+@export var air_dashes: int = 1

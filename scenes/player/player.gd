@@ -17,12 +17,14 @@ var _footstep_grace: float = 0.0
 var knockback_direction: float = 0.0
 var apply_gravity: bool = true
 var last_wall_side: float = 0.0 # used for wall slide
+var air_dashes: int
 
 signal finished_level()
 
 
 func _ready() -> void:
 	hp = stats.health
+	air_dashes = stats.air_dashes
 	state_machine.start()
 
 
@@ -37,6 +39,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y += gravity * delta
 
 	if is_on_floor():
+		air_dashes = stats.air_dashes
 		last_wall_side = 0.0
 
 	move_and_slide()
@@ -49,6 +52,14 @@ func face(direction: float) -> void:
 
 func move_x(speed: float) -> void:
 	var direction := Input.get_axis("left", "right")
+	face(direction)
+	velocity.x = direction * speed
+
+
+func dash_x(speed: float) -> void:
+	var direction := Input.get_axis("left", "right")
+	if direction == 0.0:
+		direction = signf(sprite.scale.x)
 	face(direction)
 	velocity.x = direction * speed
 

@@ -6,7 +6,10 @@ func enter() -> void:
 	player.velocity.x = 0.0
 
 
-func physics_update(delta: float) -> void:
+func physics_update(_delta: float) -> void:
+	if try_dash():
+		return state_machine.transition("Dash")
+
 	if left_ground():
 		return
 

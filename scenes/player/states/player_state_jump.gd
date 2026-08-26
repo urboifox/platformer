@@ -10,8 +10,12 @@ func enter() -> void:
 
 
 func physics_update(_delta: float) -> void:
+	if try_dash():
+		return state_machine.transition("Dash")
+
 	if player.is_on_floor():
 		return state_machine.transition(player.land_state())
+
 	if player.velocity.y > player.stats.fall_threshold:
 		return state_machine.transition("Fall")
 

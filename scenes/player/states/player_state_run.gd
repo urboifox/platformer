@@ -6,6 +6,9 @@ func enter() -> void:
 
 
 func physics_update(_delta: float) -> void:
+	if try_dash():
+		return state_machine.transition("Dash")
+
 	if left_ground():
 		return
 
