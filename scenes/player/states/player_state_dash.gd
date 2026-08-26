@@ -9,7 +9,6 @@ func enter() -> void:
 
 	_timer = player.stats.dash_time
 	player.velocity.y = 0.0
-	player.dash_x(player.stats.dash_speed)
 
 
 func exit() -> void:
@@ -22,3 +21,4 @@ func physics_update(delta: float) -> void:
 		if player.is_on_floor():
 			return state_machine.transition(player.ground_state())
 		return state_machine.transition("Fall")
+	player.dash_x(player.stats.dash_speed, delta)

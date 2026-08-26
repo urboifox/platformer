@@ -5,7 +5,7 @@ func enter() -> void:
 	player.sprite.play("run")
 
 
-func physics_update(_delta: float) -> void:
+func physics_update(delta: float) -> void:
 	if try_dash():
 		return state_machine.transition("Dash")
 
@@ -16,5 +16,5 @@ func physics_update(_delta: float) -> void:
 	if direction == 0.0:
 		return state_machine.transition("Idle")
 
-	player.move_x(player.stats.speed)
+	player.move_x(player.stats.speed, delta)
 	player.request_footsteps(2.0)

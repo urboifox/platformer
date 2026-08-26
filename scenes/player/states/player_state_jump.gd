@@ -9,7 +9,7 @@ func enter() -> void:
 	player.jump_buffer = 0.0
 
 
-func physics_update(_delta: float) -> void:
+func physics_update(delta: float) -> void:
 	if try_dash():
 		return state_machine.transition("Dash")
 
@@ -26,4 +26,4 @@ func physics_update(_delta: float) -> void:
 		if player.last_wall_side != -signf(player.get_wall_normal().x):
 			return state_machine.transition("WallSlide")
 
-	player.move_x(player.stats.speed)
+	player.move_x(player.stats.speed, delta)

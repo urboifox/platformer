@@ -6,7 +6,7 @@ extends CharacterBody2D
 @onready var camera: Camera2D = $Camera2D
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var state_machine: StateMachine = $StateMachine
-@onready var wall_check: RayCast2D = $AnimatedSprite2D/WallCheck
+@onready var wall_check: RayCast2D = $AnimatedSprite2D/WallCheck # used to check if the player reached the end of the wall he is sliding on
 
 var hp: float
 var spawn_position: Vector2
@@ -41,6 +41,7 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		air_dashes = stats.air_dashes
 		last_wall_side = 0.0
+		last_wall_side = -signf(wall_check.get_collision_normal().x) if wall_check.is_colliding() else 0.0
 
 	move_and_slide()
 
@@ -50,18 +51,18 @@ func face(direction: float) -> void:
 		sprite.scale.x = -1 if direction < 0.0 else 1
 
 
-func move_x(speed: float) -> void:
+func move_x(speed: float, delta: float) -> void:
 	var direction := Input.get_axis("left", "right")
 	face(direction)
-	velocity.x = direction * speed
+	velocity.x = move_toward(velocity.x, direction * speed, stats.acceleration * delta)
 
 
-func dash_x(speed: float) -> void:
+func dash_x(speed: float, delta: float) -> void:
 	var direction := Input.get_axis("left", "right")
 	if direction == 0.0:
 		direction = signf(sprite.scale.x)
 	face(direction)
-	velocity.x = direction * speed
+	velocity.x = move_toward(velocity.x, direction * speed, stats.acceleration * delta)
 
 
 func ground_state() -> String:

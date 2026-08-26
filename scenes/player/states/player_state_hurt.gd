@@ -10,4 +10,4 @@ func enter() -> void:
 
 
 func physics_update(delta: float) -> void:
-	player.velocity.x = move_toward(player.velocity.x, 0.0, player.stats.friction * delta)
+	player.velocity.x = move_toward(player.velocity.x, 0.0, player.stats.knockback_friction * delta)

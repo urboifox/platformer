@@ -9,7 +9,7 @@ func exit() -> void:
 	Audio.stop("falling")
 
 
-func physics_update(_delta: float) -> void:
+func physics_update(delta: float) -> void:
 	if try_dash():
 		return state_machine.transition("Dash")
 
@@ -27,4 +27,4 @@ func physics_update(_delta: float) -> void:
 	if player.velocity.y > 400.0:
 		Audio.play_loop("falling")
 
-	player.move_x(player.stats.speed)
+	player.move_x(player.stats.speed, delta)

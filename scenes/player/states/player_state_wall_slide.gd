@@ -11,11 +11,8 @@ func exit() -> void:
 	player.apply_gravity = true
 
 
-func physics_update(_delta: float) -> void:
-	if not player.is_on_wall():
-		return state_machine.transition("Fall")
-
-	if not player.wall_check.is_colliding():
+func physics_update(delta: float) -> void:
+	if not player.is_on_wall() or not player.wall_check.is_colliding():
 		return state_machine.transition("Fall")
 
 	if Input.is_action_just_pressed("jump"):
@@ -26,4 +23,4 @@ func physics_update(_delta: float) -> void:
 
 	player.velocity.y = player.stats.wall_slide_velocity
 	player.coyote_timer = player.stats.coyote_time
-	player.move_x(player.stats.speed)
+	player.move_x(player.stats.speed, delta)
