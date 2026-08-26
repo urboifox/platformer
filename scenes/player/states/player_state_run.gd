@@ -2,7 +2,7 @@ extends PlayerState
 
 
 func enter() -> void:
-	player.sprite.play("run")
+	player.sprite.play("run", 1.5)
 
 
 func physics_update(delta: float) -> void:

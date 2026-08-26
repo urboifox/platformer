@@ -239,7 +239,7 @@ animations = [{
 }],
 "loop": 0,
 "name": &"attack",
-"speed": 15.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -309,7 +309,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"idle",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -355,7 +355,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"run",
-"speed": 15.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -436,6 +436,43 @@ func take_damage(damage: int):
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ydybj"]
 size = Vector2(11, 19)
 
+[sub_resource type="Animation" id="Animation_kvlxm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D/hitbox/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_uf5tr"]
+resource_name = "attack"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D/hitbox/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lgqa7"]
+_data = {
+&"RESET": SubResource("Animation_kvlxm"),
+&"attack": SubResource("Animation_uf5tr")
+}
+
 [node name="player" type="CharacterBody2D" unique_id=265386101]
 z_index = 5
 collision_mask = 16
@@ -444,7 +481,7 @@ stats = ExtResource("2_0owmy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=49854906]
 sprite_frames = SubResource("SpriteFrames_x7p2l")
-animation = &"idle"
+animation = &"fall"
 
 [node name="hitbox" parent="AnimatedSprite2D" unique_id=2061379113 instance=ExtResource("4_kvlxm")]
 collision_mask = 128
@@ -514,3 +551,6 @@ script = ExtResource("15_fcs02")
 
 [node name="Attack" type="Node" parent="StateMachine" unique_id=1466522194]
 script = ExtResource("16_myrg7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1807299306]
+libraries/ = SubResource("AnimationLibrary_lgqa7")
