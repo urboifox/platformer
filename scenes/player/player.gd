@@ -84,14 +84,22 @@ func _update_timers(delta: float) -> void:
 	jump_buffer = stats.jump_buffer_time if Input.is_action_just_pressed("jump") else jump_buffer - delta
 
 
+func juice(duration := 0.08, strength := 6.0) -> void:
+	camera.shake(strength)
+	Engine.time_scale = 0.0
+	await get_tree().create_timer(duration, true, false, true).timeout
+	Engine.time_scale = 1.0
+
+
 func take_damage(damage: float, source_position: Vector2) -> void:
-	if invincible_timer > 0.0:
+	if invincible_timer > 0.0 or hp <= 0.0:
 		return
 	hp -= damage
 	health_changed.emit(hp)
 	knockback_direction = signf(global_position.x - source_position.x)
 	if knockback_direction == 0.0:
 		knockback_direction = -signf(sprite.scale.x)
+	juice(0.1, 8.0)
 	if hp <= 0.0:
 		state_machine.transition("Die")
 		return
