@@ -2,8 +2,11 @@ extends PlayerState
 
 
 func enter() -> void:
-	player.sprite.play("attack", 1.5)
-	player.animation_player.play("attack", -1, 1.5)
+	Audio.play("attack", 1.0, 3.75)
+	player.attack_sprite.visible = true
+	player.sprite.play("attack", 5.0)
+	player.attack_sprite.play("attack", 5.0)
+	player.hitbox_shape.disabled = false
 	await player.sprite.animation_finished
 
 	if state_machine.current_state != self:
@@ -19,5 +22,5 @@ func physics_update(delta: float) -> void:
 
 
 func exit() -> void:
-	player.animation_player.stop()
 	player.hitbox_shape.disabled = true
+	player.attack_sprite.visible = false

@@ -1,4 +1,4 @@
-extends Node        
+extends Node
 
 const SOUNDS := {
 	"footsteps": preload("res://assets/audio/sfx_footsteps.wav"),
@@ -6,6 +6,7 @@ const SOUNDS := {
 	"falling": preload("res://assets/audio/sfx_falling.wav"),
 	"land": preload("res://assets/audio/sfx_land.wav"),
 	"coin": preload("res://assets/audio/sfx_coin.ogg"),
+	"attack": preload("res://assets/audio/sfx_attack_1.wav"),
 }
 
 var _loops: Dictionary = { }

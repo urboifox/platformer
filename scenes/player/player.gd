@@ -5,10 +5,10 @@ extends CharacterBody2D
 
 @onready var camera: Camera2D = $Camera2D
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var attack_sprite: AnimatedSprite2D = $AnimatedSprite2D/AttackAnimatedSprite2D
 @onready var state_machine: StateMachine = $StateMachine
 @onready var wall_check: RayCast2D = $AnimatedSprite2D/WallCheck # used to check if the player reached the end of the wall he is sliding on
 @onready var hitbox_shape: CollisionShape2D = $AnimatedSprite2D/hitbox/CollisionShape2D
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var hp: float
 var spawn_position: Vector2
