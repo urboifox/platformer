@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://df57ckthl5dq5"]
+
+[ext_resource type="Texture2D" uid="uid://bnfw0vob135le" path="res://assets/images/smoke.png" id="1_2dseu"]
+[ext_resource type="Script" uid="uid://by4eaxrpcer4v" path="res://scenes/poof/poof.gd" id="2_u3r5k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iupaj"]
+atlas = ExtResource("1_2dseu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_olc2x"]
+atlas = ExtResource("1_2dseu")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_icltw"]
+atlas = ExtResource("1_2dseu")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gunmr"]
+atlas = ExtResource("1_2dseu")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6cdf"]
+atlas = ExtResource("1_2dseu")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ydybj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iupaj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_olc2x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_icltw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gunmr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6cdf")
+}],
+"loop": 0,
+"name": &"poof",
+"speed": 10.0
+}]
+
+[node name="poof" type="AnimatedSprite2D" unique_id=1602377730]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_ydybj")
+animation = &"poof"
+script = ExtResource("2_u3r5k")

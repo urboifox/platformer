@@ -11,6 +11,8 @@ extends CharacterBody2D
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var state_machine: StateMachine = $StateMachine
 
+const POOF = preload("res://scenes/poof/poof.tscn")
+
 var direction: int
 var target: Node2D = null
 var knockback_direction: float = 0.0
@@ -46,6 +48,8 @@ func _physics_process(delta: float) -> void:
 
 
 func take_damage(damage: float, source_position: Vector2) -> void:
+	if hp <= 0.0:
+		return
 	hp -= damage
 	flash()
 	if hp <= 0.0:
@@ -61,4 +65,7 @@ func flash() -> void:
 
 
 func die() -> void:
+	var poof := POOF.instantiate()
+	get_parent().add_child(poof)
+	poof.global_position = global_position
 	queue_free()

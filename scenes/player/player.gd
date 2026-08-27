@@ -9,6 +9,8 @@ extends CharacterBody2D
 @onready var state_machine: StateMachine = $StateMachine
 @onready var wall_check: RayCast2D = $AnimatedSprite2D/WallCheck # used to check if the player reached the end of the wall he is sliding on
 @onready var hitbox_shape: CollisionShape2D = $AnimatedSprite2D/hitbox/CollisionShape2D
+@onready var dust_particles: GPUParticles2D = $DustParticles
+@onready var land_dust_sprite: AnimatedSprite2D = $LandDust
 
 var hp: float
 var spawn_position: Vector2
@@ -55,6 +57,7 @@ func _physics_process(delta: float) -> void:
 		last_wall_side = -signf(wall_check.get_collision_normal().x) if wall_check.is_colliding() else 0.0
 
 	move_and_slide()
+	dust_particles.emitting = is_on_floor() and absf(velocity.x) > 10.0
 
 
 func face(direction: float) -> void:

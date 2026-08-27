@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://cbe2lt0n0tlrn" path="res://scenes/player/states/player_state_land.gd" id="18_uf5tr"]
 [ext_resource type="Script" uid="uid://dvmex81yefhfh" path="res://scenes/player/states/player_state_attack_up.gd" id="19_akup1"]
 [ext_resource type="Script" uid="uid://b2sikobuffant" path="res://scenes/player/states/player_state_attack_down.gd" id="20_akdn1"]
+[ext_resource type="Texture2D" uid="uid://jqvfw8vfh4jt" path="res://assets/images/land_dust.png" id="21_3j4b4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7obkq"]
 atlas = ExtResource("1_8afob")
@@ -573,6 +574,59 @@ func take_damage(damage: int):
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ydybj"]
 size = Vector2(11, 19)
 
+[sub_resource type="Curve" id="Curve_xrinp"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_2q4yw"]
+curve = SubResource("Curve_xrinp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ydybj"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 30.0
+scale_min = 0.5
+scale_max = 2.0
+color = Color(0.68235296, 0.101960786, 0.09411765, 0.61960787)
+alpha_curve = SubResource("CurveTexture_2q4yw")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2t3bg"]
+atlas = ExtResource("21_3j4b4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jrbya"]
+atlas = ExtResource("21_3j4b4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahqnk"]
+atlas = ExtResource("21_3j4b4")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vb1ce"]
+atlas = ExtResource("21_3j4b4")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2q4yw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2t3bg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jrbya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ahqnk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vb1ce")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 10.0
+}]
+
 [node name="player" type="CharacterBody2D" unique_id=265386101]
 z_index = 5
 collision_mask = 16
@@ -668,3 +722,18 @@ script = ExtResource("19_akup1")
 
 [node name="AttackDown" type="Node" parent="StateMachine" unique_id=660044533]
 script = ExtResource("20_akdn1")
+
+[node name="DustParticles" type="GPUParticles2D" parent="." unique_id=41914521]
+show_behind_parent = true
+position = Vector2(0, 14)
+emitting = false
+amount = 12
+lifetime = 0.4
+process_material = SubResource("ParticleProcessMaterial_ydybj")
+
+[node name="LandDust" type="AnimatedSprite2D" parent="." unique_id=440473198]
+visible = false
+modulate = Color(0.49803922, 0.49803922, 0.49803922, 0.6666667)
+sprite_frames = SubResource("SpriteFrames_2q4yw")
+frame = 3
+frame_progress = 1.0
