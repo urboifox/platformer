@@ -1,5 +1,7 @@
 extends PlayerState
 
+var fall_impact_velocity := 0.0
+
 
 func enter() -> void:
 	player.sprite.play("fall")
@@ -7,14 +9,20 @@ func enter() -> void:
 
 func exit() -> void:
 	Audio.stop("falling")
+	fall_impact_velocity = 0.0
 
 
 func physics_update(delta: float) -> void:
 	if try_dash():
 		return state_machine.transition("Dash")
 
+	if not player.is_on_floor():
+		if player.velocity.y > 0.0:
+			fall_impact_velocity = player.velocity.y
+
 	if player.is_on_floor():
-		Audio.play("land", 0.5)
+		if fall_impact_velocity > 600.0:
+			return state_machine.transition("Land")
 		return state_machine.transition(player.land_state())
 
 	if player.velocity.y > 400.0:

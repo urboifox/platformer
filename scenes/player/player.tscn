@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://krx30pxkgg41" path="res://scenes/player/states/player_state_wall_slide.gd" id="14_ugbui"]
 [ext_resource type="Script" uid="uid://cyxrv0rstfvg" path="res://scenes/player/states/player_state_dash.gd" id="15_fcs02"]
 [ext_resource type="Script" uid="uid://b03qwqrqhpvl8" path="res://scenes/player/states/player_state_attack.gd" id="16_myrg7"]
+[ext_resource type="Script" uid="uid://cbe2lt0n0tlrn" path="res://scenes/player/states/player_state_land.gd" id="18_uf5tr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7obkq"]
 atlas = ExtResource("1_8afob")
@@ -125,6 +126,26 @@ region = Rect2(64, 160, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_kvlxm"]
 atlas = ExtResource("1_8afob")
 region = Rect2(96, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1aof"]
+atlas = ExtResource("1_8afob")
+region = Rect2(192, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8qe1"]
+atlas = ExtResource("1_8afob")
+region = Rect2(96, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdvrm"]
+atlas = ExtResource("1_8afob")
+region = Rect2(128, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5xbmr"]
+atlas = ExtResource("1_8afob")
+region = Rect2(192, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hir57"]
+atlas = ExtResource("1_8afob")
+region = Rect2(224, 160, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8ydkj"]
 atlas = ExtResource("1_8afob")
@@ -330,6 +351,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_t1aof")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8qe1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hdvrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5xbmr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hir57")
+}],
+"loop": 0,
+"name": &"land",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_8ydkj")
 }, {
 "duration": 1.0,
@@ -508,8 +549,8 @@ stats = ExtResource("2_0owmy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=49854906]
 sprite_frames = SubResource("SpriteFrames_x7p2l")
-animation = &"attack"
-frame = 7
+animation = &"land"
+frame = 4
 frame_progress = 1.0
 
 [node name="hitbox" parent="AnimatedSprite2D" unique_id=2061379113 instance=ExtResource("4_kvlxm")]
@@ -527,6 +568,7 @@ target_position = Vector2(8, 0)
 collision_mask = 16
 
 [node name="AttackAnimatedSprite2D" type="AnimatedSprite2D" parent="AnimatedSprite2D" unique_id=315142908]
+visible = false
 position = Vector2(12, 0)
 sprite_frames = SubResource("SpriteFrames_ydybj")
 animation = &"attack"
@@ -587,3 +629,6 @@ script = ExtResource("15_fcs02")
 
 [node name="Attack" type="Node" parent="StateMachine" unique_id=1466522194]
 script = ExtResource("16_myrg7")
+
+[node name="Land" type="Node" parent="StateMachine" unique_id=660044531]
+script = ExtResource("18_uf5tr")
