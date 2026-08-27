@@ -8,3 +8,5 @@ func _on_area_entered(area: Area2D) -> void:
 		area.owner.take_damage(damage, global_position)
 		if owner.has_method("juice"):
 			owner.juice(0.06, 4.0)
+		if owner.has_method("on_attack_hit"):
+			owner.on_attack_hit()

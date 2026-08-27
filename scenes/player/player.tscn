@@ -18,6 +18,8 @@
 [ext_resource type="Script" uid="uid://cyxrv0rstfvg" path="res://scenes/player/states/player_state_dash.gd" id="15_fcs02"]
 [ext_resource type="Script" uid="uid://b03qwqrqhpvl8" path="res://scenes/player/states/player_state_attack.gd" id="16_myrg7"]
 [ext_resource type="Script" uid="uid://cbe2lt0n0tlrn" path="res://scenes/player/states/player_state_land.gd" id="18_uf5tr"]
+[ext_resource type="Script" uid="uid://dvmex81yefhfh" path="res://scenes/player/states/player_state_attack_up.gd" id="19_akup1"]
+[ext_resource type="Script" uid="uid://b2sikobuffant" path="res://scenes/player/states/player_state_attack_down.gd" id="20_akdn1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7obkq"]
 atlas = ExtResource("1_8afob")
@@ -660,3 +662,9 @@ script = ExtResource("16_myrg7")
 
 [node name="Land" type="Node" parent="StateMachine" unique_id=660044531]
 script = ExtResource("18_uf5tr")
+
+[node name="AttackUp" type="Node" parent="StateMachine" unique_id=660044532]
+script = ExtResource("19_akup1")
+
+[node name="AttackDown" type="Node" parent="StateMachine" unique_id=660044533]
+script = ExtResource("20_akdn1")

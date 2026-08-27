@@ -22,6 +22,7 @@ var last_wall_side: float = 0.0 # used for wall slide
 var air_dashes: int
 var air_jumps: int
 var attack_cooldown: float = 0.0
+var pogo_ready: bool = false
 
 signal finished_level()
 signal health_changed(value: float)
@@ -58,6 +59,12 @@ func face(direction: float) -> void:
 		sprite.scale.x = -1 if direction < 0.0 else 1
 
 
+func aim_attack(slash_position: Vector2, slash_rotation: float, hitbox_position: Vector2) -> void:
+	attack_sprite.position = slash_position
+	attack_sprite.rotation = slash_rotation * signf(sprite.scale.x)
+	hitbox_shape.position = hitbox_position
+
+
 func move_x(speed: float, delta: float) -> void:
 	var direction := Input.get_axis("left", "right")
 	face(direction)
@@ -92,6 +99,19 @@ func juice(duration := 0.08, strength := 6.0) -> void:
 	Engine.time_scale = 0.0
 	await get_tree().create_timer(duration, true, false, true).timeout
 	Engine.time_scale = 1.0
+
+
+func on_attack_hit() -> void:
+	if pogo_ready:
+		pogo()
+
+
+func pogo() -> void:
+	pogo_ready = false
+	velocity.y = stats.pogo_force
+	air_jumps = stats.air_jumps
+	air_dashes = stats.air_dashes
+	state_machine.call_deferred("transition", "Fall")
 
 
 func take_damage(damage: float, source_position: Vector2) -> void:

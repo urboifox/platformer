@@ -45,3 +45,19 @@ func try_wall_slide() -> bool:
 	if wall_side == player.last_wall_side:
 		return false
 	return true
+
+
+func try_attack() -> bool:
+	if player.attack_cooldown > 0.0:
+		return false
+	if not Input.is_action_just_pressed("attack"):
+		return false
+
+	var vertical := Input.get_axis("up", "down")
+	if vertical < 0.0:
+		state_machine.transition("AttackUp")
+	elif vertical > 0.0 and not player.is_on_floor():
+		state_machine.transition("AttackDown")
+	else:
+		state_machine.transition("Attack")
+	return true

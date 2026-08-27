@@ -4,7 +4,13 @@ var fall_impact_velocity := 0.0
 
 
 func enter() -> void:
-	player.sprite.play("fall")
+	_update_air_anim()
+
+
+func _update_air_anim() -> void:
+	var anim := "jump" if player.velocity.y < 0.0 else "fall"
+	if player.sprite.animation != anim:
+		player.sprite.play(anim)
 
 
 func exit() -> void:
@@ -25,6 +31,8 @@ func physics_update(delta: float) -> void:
 			return state_machine.transition("Land")
 		return state_machine.transition(player.land_state())
 
+	_update_air_anim()
+
 	if player.velocity.y > 400.0:
 		Audio.play_loop("falling")
 
@@ -37,7 +45,7 @@ func physics_update(delta: float) -> void:
 	if try_air_jump():
 		return state_machine.transition("Jump")
 
-	if Input.is_action_just_pressed("attack") and player.attack_cooldown <= 0.0:
-		return state_machine.transition("Attack")
+	if try_attack():
+		return
 
 	player.move_x(player.stats.speed, delta)

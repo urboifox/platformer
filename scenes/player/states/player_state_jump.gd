@@ -22,8 +22,8 @@ func physics_update(delta: float) -> void:
 	if Input.is_action_just_released("jump") and player.velocity.y < 0.0:
 		player.velocity.y *= player.stats.jump_cut
 
-	if Input.is_action_just_pressed("attack") and player.attack_cooldown <= 0.0:
-		return state_machine.transition("Attack")
+	if try_attack():
+		return
 
 	if try_wall_slide():
 		return state_machine.transition("WallSlide")
