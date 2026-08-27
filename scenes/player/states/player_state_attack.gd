@@ -2,10 +2,11 @@ extends PlayerState
 
 
 func enter() -> void:
+	player.attack_cooldown = player.stats.attack_cooldown
 	Audio.play("attack", 1.0, 3.75)
 	player.attack_sprite.visible = true
-	player.sprite.play("attack", 5.0)
-	player.attack_sprite.play("attack", 5.0)
+	player.sprite.play("attack", 4.0)
+	player.attack_sprite.play("attack", 2.0)
 	player.hitbox_shape.disabled = false
 	await player.sprite.animation_finished
 

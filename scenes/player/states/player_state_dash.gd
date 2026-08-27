@@ -22,7 +22,7 @@ func physics_update(delta: float) -> void:
 			return state_machine.transition(player.ground_state())
 		return state_machine.transition("Fall")
 
-	if Input.is_action_just_pressed("attack"):
+	if Input.is_action_just_pressed("attack") and player.attack_cooldown <= 0.0:
 		return state_machine.transition("Attack")
 
 	player.dash_x(player.stats.dash_speed, delta)

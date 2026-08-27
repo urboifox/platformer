@@ -13,7 +13,9 @@ func physics_update(delta: float) -> void:
 	if direction != 0.0:
 		return state_machine.transition("Run")
 
-	if Input.is_action_just_pressed("attack"):
+	print(player.attack_cooldown)
+	if Input.is_action_just_pressed("attack") and player.attack_cooldown <= 0.0:
+		print("attack")
 		return state_machine.transition("Attack")
 
 	player.velocity.x = move_toward(player.velocity.x, 0.0, player.stats.friction * delta)

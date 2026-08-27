@@ -37,7 +37,7 @@ func physics_update(delta: float) -> void:
 	if try_air_jump():
 		return state_machine.transition("Jump")
 
-	if Input.is_action_just_pressed("attack"):
+	if Input.is_action_just_pressed("attack") and player.attack_cooldown <= 0.0:
 		return state_machine.transition("Attack")
 
 	player.move_x(player.stats.speed, delta)

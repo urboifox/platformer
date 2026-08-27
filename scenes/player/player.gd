@@ -21,6 +21,7 @@ var apply_gravity: bool = true
 var last_wall_side: float = 0.0 # used for wall slide
 var air_dashes: int
 var air_jumps: int
+var attack_cooldown: float = 0.0
 
 signal finished_level()
 signal health_changed(value: float)
@@ -82,6 +83,8 @@ func land_state() -> String:
 func _update_timers(delta: float) -> void:
 	coyote_timer = stats.coyote_time if is_on_floor() else coyote_timer - delta
 	jump_buffer = stats.jump_buffer_time if Input.is_action_just_pressed("jump") else jump_buffer - delta
+	if attack_cooldown > 0.0:
+		attack_cooldown -= delta
 
 
 func juice(duration := 0.08, strength := 6.0) -> void:
