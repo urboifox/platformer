@@ -1,7 +1,7 @@
 class_name MovementStats
 extends Resource
 
-@export var health: float = 2.0
+@export var health: float = 3.0
 @export var acceleration: float = 3000.0
 @export var speed: float = 180.0
 @export var dash_speed: float = 500.0

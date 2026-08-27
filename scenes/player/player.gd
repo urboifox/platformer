@@ -43,7 +43,9 @@ func _physics_process(delta: float) -> void:
 	_update_footsteps(delta)
 
 	if not is_on_floor() and apply_gravity:
-		var gravity := stats.gravity * (stats.fall_multiplier if velocity.y > 0.0 else 1.0)
+		var gravity := stats.gravity * (
+			stats.fall_multiplier if velocity.y > 0.0 and not Input.is_action_pressed("jump") else 1.0
+		)
 		velocity.y += gravity * delta
 
 	if is_on_floor():
