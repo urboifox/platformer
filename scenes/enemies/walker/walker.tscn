@@ -124,6 +124,9 @@ size = Vector2(15, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrinp"]
 size = Vector2(24.5, 16)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gb41s"]
+size = Vector2(24, 27)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2q4yw"]
 size = Vector2(24, 27)
 
@@ -166,6 +169,11 @@ position = Vector2(-13.75, 1)
 shape = SubResource("RectangleShape2D_xrinp")
 disabled = true
 debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="BodyCollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Hitbox" unique_id=163848749]
+position = Vector2(-2, 2.5)
+shape = SubResource("RectangleShape2D_gb41s")
+debug_color = Color(0, 0.6515973, 0.012500519, 0.41960785)
 
 [node name="hurtbox" parent="AnimatedSprite2D" unique_id=87016501 instance=ExtResource("4_seg88")]
 

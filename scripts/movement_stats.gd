@@ -3,9 +3,9 @@ extends Resource
 
 @export var health: float = 2.0
 @export var acceleration: float = 3000.0
-@export var speed: float = 250.0
+@export var speed: float = 180.0
 @export var dash_speed: float = 500.0
-@export var jump_velocity: float = -400.0
+@export var jump_velocity: float = -450.0
 @export var gravity: float = 1400.0
 @export var fall_threshold: float = 250.0
 @export var fall_multiplier: float = 1.2

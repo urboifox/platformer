@@ -8,7 +8,7 @@
 [node name="level_1" type="Node2D" unique_id=501419045]
 
 [node name="spawn" type="Marker2D" parent="." unique_id=1160066576]
-position = Vector2(-518, -26)
+position = Vector2(0, -26)
 
 [node name="blocks" type="Node2D" parent="." unique_id=511321230]
 

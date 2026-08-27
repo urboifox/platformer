@@ -21,7 +21,7 @@ func physics_update(delta: float) -> void:
 			fall_impact_velocity = player.velocity.y
 
 	if player.is_on_floor():
-		if fall_impact_velocity > 600.0:
+		if fall_impact_velocity > 800.0:
 			return state_machine.transition("Land")
 		return state_machine.transition(player.land_state())
 
