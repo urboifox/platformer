@@ -23,6 +23,7 @@ var air_dashes: int
 var air_jumps: int
 var attack_cooldown: float = 0.0
 var pogo_ready: bool = false
+var finishing: bool = false
 
 signal finished_level()
 signal health_changed(value: float)
@@ -167,4 +168,7 @@ func finish_level() -> void:
 
 
 func win() -> void:
+	if finishing:
+		return
+	finishing = true
 	state_machine.transition("Win")

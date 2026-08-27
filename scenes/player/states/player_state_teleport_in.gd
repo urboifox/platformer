@@ -5,4 +5,5 @@ func enter() -> void:
 	player.velocity = Vector2.ZERO
 	player.sprite.play("teleport_in")
 	await player.sprite.animation_finished
+	player.finishing = false
 	state_machine.transition("Idle")
