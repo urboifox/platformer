@@ -31,8 +31,23 @@ func load_level(index: int) -> void:
 	level_container.add_child(_level)
 	player.spawn_position = _level.get_node("spawn").global_position
 	player.global_position = player.spawn_position
+	_apply_camera_limits()
 	player.camera.reset_smoothing()
 	player.state_machine.transition("TeleportIn")
+
+
+func _apply_camera_limits() -> void:
+	if not _level.has_node("Terrain"):
+		return
+	var terrain: TileMapLayer = _level.get_node("Terrain")
+	var used := terrain.get_used_rect()
+	var ts := terrain.tile_set.tile_size
+	var origin := terrain.global_position
+	var cam := player.camera
+	cam.limit_left = int(origin.x + used.position.x * ts.x)
+	cam.limit_right = int(origin.x + (used.position.x + used.size.x) * ts.x)
+	cam.limit_bottom = int(origin.y + (used.position.y + used.size.y) * ts.y)
+	cam.limit_top = -10000000   # open upward so the camera follows you when climbing
 
 
 func _on_finished_level() -> void:

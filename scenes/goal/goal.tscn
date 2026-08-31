@@ -1,20 +1,29 @@
 [gd_scene format=3 uid="uid://xv3cxv0sqe3f"]
 
 [ext_resource type="Script" uid="uid://0x30sgc35beb" path="res://scenes/goal/goal.gd" id="1_c37cn"]
+[ext_resource type="Texture2D" uid="uid://b7wquuibrxf5e" path="res://assets/images/props.png" id="2_r84s2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gmldq"]
-size = Vector2(40, 60)
+size = Vector2(46, 90)
 
 [node name="Goal" type="Area2D" unique_id=1693807159]
 script = ExtResource("1_c37cn")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1709385409]
-offset_right = 40.0
-offset_bottom = 60.0
-color = Color(0.32156864, 1, 0.3882353, 0.6156863)
+[node name="Stick" type="Sprite2D" parent="." unique_id=148229335]
+position = Vector2(23, 45)
+texture = ExtResource("2_r84s2")
+region_enabled = true
+region_rect = Rect2(570, 231, 46, 89)
+
+[node name="Flag" type="Sprite2D" parent="." unique_id=490900010]
+position = Vector2(23, 37)
+texture = ExtResource("2_r84s2")
+region_enabled = true
+region_rect = Rect2(642, 226, 28, 59)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=847669518]
-position = Vector2(20, 30)
+position = Vector2(23, 45)
 shape = SubResource("RectangleShape2D_gmldq")
+debug_color = Color(1.4439225e-06, 0.6429106, 0.31495893, 0.41960785)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

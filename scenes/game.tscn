@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dlpvvngv32dbk" path="res://scenes/levels/level_1.tscn" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://dmqwm1whvogj4" path="res://scenes/levels/level_2.tscn" id="3_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://qqv3xtq4cs7g" path="res://scenes/hud/hud.tscn" id="5_iywne"]
+[ext_resource type="Texture2D" uid="uid://b0y6i2ny0pk4i" path="res://assets/images/background.png" id="6_p57ef"]
 
 [node name="game" type="Node2D" unique_id=1135410216]
 script = ExtResource("1_lnu2h")
@@ -15,3 +16,17 @@ levels = Array[PackedScene]([ExtResource("2_yqjtg"), ExtResource("3_lbhrr")])
 [node name="LevelContainer" type="Node2D" parent="." unique_id=668704692]
 
 [node name="hud" parent="." unique_id=854056363 instance=ExtResource("5_iywne")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1263771498]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=2082552469]
+modulate = Color(0.46463054, 0.45036757, 0.28328708, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_p57ef")
+expand_mode = 1
+stretch_mode = 6

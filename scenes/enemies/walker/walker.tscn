@@ -134,6 +134,7 @@ size = Vector2(24, 27)
 size = Vector2(21, 27)
 
 [node name="walker" type="CharacterBody2D" unique_id=1367810944]
+z_index = 5
 collision_layer = 32
 collision_mask = 16
 script = ExtResource("1_nu5r1")
